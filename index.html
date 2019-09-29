@@ -69,7 +69,10 @@
             })
             let titlesAndLinks=container.map(x=>x.firstElementChild.nextElementSibling.firstElementChild)
             let titles=titlesAndLinks.map(x=>x.getAttribute("title"))
-            let newsLinks=titlesAndLinks.map(x=>x.href)
+            let newsLinksBefore=titlesAndLinks.map(x=>x.href)
+            let newsLinks=newsLinksBefore.map(x=>{
+                return "https://baomoi.com"+x.substring(x.indexOf("io")+2)
+            })
             let metaData=container.map(x=>x.firstElementChild.nextElementSibling.nextElementSibling)
             let sources=metaData.map(x=>x.firstElementChild.innerText)
             let timesISO=metaData.map(x=> x.firstElementChild.nextElementSibling.getAttribute("datetime"))
